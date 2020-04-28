@@ -1,12 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <h1>Welcome to Your Vue.js App</h1>
+    <h1>Welcome, {{this.$auth.user.name}}</h1>
+      <Bug v-for="bug in bugs" :key="bug.id" :bugData="bug"></Bug>
   </div>
 </template>
 
 <script>
+import Bug from '../components/Bug.vue';
 export default {
-  name: "home"
+  name: "home",
+
+  created() {
+    this.$store.dispatch('getBugs')
+    
+  },
+  computed: {
+    bugs() {
+      return this.$store.state.bugs;
+    }
+  },
+  components: {
+    Bug
+  }
 };
 </script>
