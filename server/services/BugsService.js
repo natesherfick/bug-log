@@ -7,8 +7,8 @@ class BugsService {
     return await dbContext.Bugs.find().populate("creator", "name picture")
   }
 
-  async getById(id, userEmail) {
-    let data = await dbContext.Bugs.findOne({ _id: id, creatorEmail: userEmail })
+  async getById(id) {
+    let data = await dbContext.Bugs.findOne({ _id: id})
     if (!data) {
       throw new BadRequest("Invalid ID or you do not own this board")
     }

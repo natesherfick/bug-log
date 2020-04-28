@@ -16,6 +16,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    beforeEnter: authGuard,
   },
   {
     path: "/profile",
@@ -24,7 +25,7 @@ const routes = [
     beforeEnter: authGuard,
   },
   {
-    path: "/bugdetails",
+    path: "/bugs/:bugId",
     name: "BugDetails",
     component: BugDetails,
     beforeEnter: authGuard,
