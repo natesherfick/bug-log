@@ -117,7 +117,7 @@ Delete
 
 ### Visualization
 
-- At least 2 supported front end routes
+X At least 2 supported front end routes
    Home shows all bugs
    BugDetails displays the details of a bug and its Notes
 - Bugs can be filtered by their status
@@ -134,6 +134,6 @@ X Bugs can be created from the Home view
 X Bugs can be closed from the BugDetails view
 X User is prompted "are you sure?" when closing a Bug
 - Notes can be added and removed from a bug in the BugDetails view
-- User prompt to remove Note from Bug
+X User prompt to remove Note from Bug
 X A Bug can be edited
 X Cannot edit a Bug after it is closed

@@ -39,10 +39,19 @@
 <button v-if='this.$auth.user.email == activeBug.creatorEmail && !activeBug.closed' class='btn btn-danger' @click='closeBug(activeBug)'>Close</button>
 
   </div>
+      <h4>Comments</h4>
+      <div class="row">
+<span class="col-6">Name</span>
+<span class="col-6">Comment</span>
+</div>
+  <div>
+<Note v-for="note in notes" :key="note.id" :noteData="note"></Note>
+</div>
   </div>
 </template>
 
 <script>
+import Note from '../components/Note.vue';
 export default {
   name: "Bugs",
   props: ['bugData'],
@@ -54,10 +63,15 @@ export default {
   created() {
     this.$store.dispatch('getActiveBug', this.$route.params.bugId)
     console.log(this.$route.params.bugId);
+    this.$store.dispatch('getNotesByBugId', this.$route.params.bugId)
+    
   },
   computed: {
     activeBug() {
       return this.$store.state.activeBug
+    },
+    notes() {
+      return this.$store.state.notes
     },
   },
   methods: {
@@ -73,6 +87,9 @@ export default {
       this.$store.dispatch('editBug', this.activeBug)
       this.editing = false
     },
+  },
+  components: {
+    Note
   }
 };
 </script>
